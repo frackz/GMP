@@ -19,10 +19,10 @@ module.exports = class CommandHandler {
                 file: f
             }
             data.push(e.data)
-            console.log("[ F&S ] Loaded command /"+e.data.name)
+            console.log("[ GMP ] Loaded command /"+e.data.name)
         })
         rest.put(Routes.applicationCommands(this.config.bot.id, '1002311893014286446'), {body: data})
-            .then(() => console.log("[ F&S ] Completed all commands"))
+            .then(() => console.log("[ GMP ] Completed all commands"))
             .catch(console.error)
     }
 }

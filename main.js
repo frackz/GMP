@@ -4,7 +4,7 @@ const WebManager = require('./web/web')
 
 const Database = require('better-sqlite3')
 
-console.log("[ F&S ] Starting!")
+console.log("[ GMP ] Starting!")
 
 const Object = {}
 
