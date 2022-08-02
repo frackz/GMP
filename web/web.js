@@ -13,9 +13,12 @@ module.exports = class Web {
     }
 
     init() {
-        this.app.get("/gmp/api/banned", (req, res) => {
-            const uuid = req.headers.uuid
-            if (uuid == null) {return res.json({success: false, message: "UUID is invalid."})}
+        require('fs').readdirSync('./web/getters').forEach(f => {
+            const name = require('./getters/'+f).route
+            console.log('[ Web Handler ] Loaded route '+name+' on port 8080')
+            this.app.get(name, (req, res) => {
+                require('./getters/'+f).execute(req,res,this.db, this.config)
+            })
         })
     }
 }
