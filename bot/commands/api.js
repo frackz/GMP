@@ -11,6 +11,10 @@ module.exports = {
         var owned = false; if(data != null) {owned=true}
         var key = "None"; if(owned == true){key=data.key}
         var msg = ""; if (key!="None") {msg="\n\nYour current API key is: ||"+key+"||"}
+
+        // Enable / Disable
+        var text = "🍄 Disable"; if(data != null && data.disabled == true){text='🌱 Enable'}
+        var style = 4; if(text.includes('En')){style=3}
         
         return interaction.reply({
             embeds: [{
@@ -25,7 +29,7 @@ module.exports = {
                         {
                             "type": 2,
                             "label": "✨ Generate",
-                            "style": 3,
+                            "style": 1,
                             "custom_id": "generate",
                             "disabled": owned
                         },
@@ -38,15 +42,14 @@ module.exports = {
                         },
                         {
                             "type": 2,
-                            "label": "🍄 Disable",
-                            "style": 4,
+                            "label": text,
+                            "style": style,
                             "custom_id": "disable",
                             "disabled": !owned
                         },
                     ]
         
                 }
-            ]
-        })
+            ], ephemeral: true})
     }
 }
