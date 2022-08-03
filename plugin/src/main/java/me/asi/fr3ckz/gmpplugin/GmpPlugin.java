@@ -3,6 +3,7 @@ package me.asi.fr3ckz.gmpplugin;
 import me.asi.fr3ckz.gmpplugin.commands.CommandManager;
 import me.asi.fr3ckz.gmpplugin.commands.subcommands.CheckPlayer;
 import me.asi.fr3ckz.gmpplugin.commands.subcommands.HelpCommand;
+import me.asi.fr3ckz.gmpplugin.commands.subcommands.ReloadCommand;
 import me.asi.fr3ckz.gmpplugin.listener.JoinListener;
 import me.asi.fr3ckz.gmpplugin.utils.getBanned;
 import org.bukkit.Bukkit;
@@ -16,6 +17,7 @@ public final class GmpPlugin extends JavaPlugin {
     public CommandManager cmdManager;
     public CheckPlayer checkPlayer;
     public HelpCommand helpCommand;
+    public ReloadCommand reloadCommand;
 
     @Override
     public void onEnable() {
@@ -23,6 +25,7 @@ public final class GmpPlugin extends JavaPlugin {
         GetBanned = new getBanned(this);
         cmdManager = new CommandManager(this);
         checkPlayer = new CheckPlayer(this);
+        reloadCommand = new ReloadCommand(this);
 
         Bukkit.getServer().getPluginManager().registerEvents(new JoinListener(this), this);
         getCommand("gmp").setExecutor(new CommandManager(this));
@@ -44,4 +47,5 @@ public final class GmpPlugin extends JavaPlugin {
     public void onDisable() {
 
     }
+
 }

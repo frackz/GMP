@@ -30,9 +30,16 @@ public class HelpCommand extends SubCommands {
 
     @Override
     public void perform(Player player, String[] args) {
-        player.sendMessage(ChatColor.DARK_GRAY + "-------------------------------");
-        player.sendMessage(ChatColor.YELLOW + "--> " + ChatColor.WHITE + " /gmp checkplayer to check a player");
-        player.sendMessage(ChatColor.YELLOW + "--> " + ChatColor.WHITE + " /gmp help check all commands");
-        player.sendMessage(ChatColor.DARK_GRAY + "-------------------------------");
+
+        if (player.hasPermission(plugin.getConfig().getString("staff-perm"))) {
+            player.sendMessage(ChatColor.DARK_GRAY + "-------------------------------");
+            player.sendMessage(ChatColor.YELLOW + "--> " + ChatColor.WHITE + " /gmp checkplayer to check a player");
+            player.sendMessage(ChatColor.YELLOW + "--> " + ChatColor.WHITE + " /gmp help check all commands");
+            player.sendMessage(ChatColor.YELLOW + "--> " + ChatColor.WHITE + " /gmp reload reloads the config");
+            player.sendMessage(ChatColor.YELLOW + "--> " + ChatColor.WHITE + " /gmp report for instructions to report a player");
+            player.sendMessage(ChatColor.DARK_GRAY + "-------------------------------");
+        }
+
+
     }
 }

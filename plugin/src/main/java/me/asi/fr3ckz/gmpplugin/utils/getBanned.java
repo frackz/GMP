@@ -50,7 +50,9 @@ public class getBanned {
                 String result = EntityUtils.toString(entity);
                 JSONParser parser = new JSONParser();
                 JSONObject json = (JSONObject) parser.parse(result);
-                //System.out.println(result);
+                if (json.get("auth").equals(false)) {
+                    System.out.println("Api is not set or is invalid. Join our discord server to get the api key. frackz.xyz/gmp");
+                }
                 return json;
             }
 
