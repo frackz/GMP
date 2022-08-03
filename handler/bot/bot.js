@@ -20,7 +20,7 @@ module.exports = class BotManager extends Discord.Client {
         this.on('ready', () => {
             this.user.setPresence({
                 activities: [{ name: `punishing`, type: Discord.ActivityType.Watching }],
-                status: 'dnd',
+                status: 'online',
             });
         })
         new EventLoader(this).load()

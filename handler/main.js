@@ -19,5 +19,4 @@ Object.db.exec("CREATE TABLE IF NOT EXISTS `user` (`user` varchar(255) NOT NULL,
 Object.config = require('./config.json')
 
 new BotManager({partials: ['MESSAGE', 'CHANNEL', 'REACTION'], intents: 32767, disableMentions: 'everyone'},Object).run()
-
 new WebManager(Object).run()

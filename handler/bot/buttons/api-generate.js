@@ -37,7 +37,7 @@ module.exports = {
                         ]
             
                     }
-                ], ephemeral: true})
+                ], ephemeral: true}).catch((err) => console.error(err))
         } else {
             console.log("Already generated")
         }

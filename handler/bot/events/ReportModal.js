@@ -11,9 +11,9 @@ module.exports = {
                 const reason = interaction.fields.getTextInputValue('reason');
                 const proof = interaction.fields.getTextInputValue('proof');
                 axios.get('https://api.mojang.com/users/profiles/minecraft/'+username).then((res) => {
-                    if (res.data == '') {return interaction.reply({content: "User does not exist.", ephemeral: true})}
+                    if (res.data == '') {return interaction.reply({content: "User does not exist.", ephemeral: true}).catch((err) => console.error(err))}
                     const hasBeenReported = db.prepare('SELECT * FROM `reports` WHERE `user` = ? AND `target` = ?').get(interaction.user.id, res.data.id)
-                    if (hasBeenReported != null) {return interaction.reply({content: "You've already reported this person!", ephemeral: true})}    
+                    if (hasBeenReported != null) {return interaction.reply({content: "You've already reported this person!", ephemeral: true}).catch((err) => console.error(err))}    
                     db.prepare("INSERT INTO `reports` (`user`, `target`, `reason`, `proof` ) VALUES (?, ?, ?, ?)").run(
                         interaction.user.id,
                         res.data.id,
@@ -63,14 +63,14 @@ module.exports = {
                             "description": "The player with the name **"+username+"** has now been reported to GMP.\n\nYou will receive a response to your reporting within a few days.\n\nIf this is a spam report you will receive a ban.",
                             "color": 16774400
                         }], ephemeral: true
-                    })
+                    }).catch((err) => console.error(err))
                 })
             } else {
                 return interaction.reply({embeds:[{
                     "title": "Slow down on those reports!",
                     "description": "You can only send a report each minute to stop spamming.\n\nPlease wait those seconds and we hope you will report, and make Minecraft\na better place...",
                     "color": 16493568
-                }], ephemeral: true})
+                }], ephemeral: true}).catch((err) => console.error(err))
             }
         }
     }
