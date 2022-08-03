@@ -59,7 +59,9 @@ public class CheckPlayer extends SubCommands {
                     if (json == null) {return;}
                     try {
                         if(plugin.GetBanned.getData(String.valueOf(json.get("id"))).containsKey("data")) {
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[ &6GMP &8] &7This player &cIS &7banned from &eGMP"));
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[ &6GMP &8] &7This player &cis &7banned from &eGMP"));
+                        } else {
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8[ &6GMP &8] &7This player &ais mot &7banned from &eGMP"));
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

@@ -51,7 +51,7 @@ public class getBanned {
                 JSONParser parser = new JSONParser();
                 JSONObject json = (JSONObject) parser.parse(result);
                 if (json.get("auth").equals(false)) {
-                    System.out.println("Api is not set or is invalid. Join our discord server to get the api key. frackz.xyz/gmp");
+                    System.out.println("GMP: Api is not set or is invalid. Join our discord server to get the api key. frackz.xyz/gmp");
                 }
                 return json;
             }

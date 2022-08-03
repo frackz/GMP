@@ -1,3 +1,3 @@
 api-key: "Insert here" # Insert your api key you got from our discord
 staff-perm: "Insert here" # This permission bypasses GMP ban system
-
+pass-thru: "Inseert here" # This is a permission that can pass thru the system
