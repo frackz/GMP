@@ -16,9 +16,9 @@ module.exports = {
     execute(client, interaction, config, db) {
         const username = interaction.options.getString('username');
         axios.get('https://api.mojang.com/users/profiles/minecraft/'+username).then((res) => {
-            if (res.data == '') {return interaction.reply({content: "User does not exist.", ephemeral: true}).catch((err) => console.error(err))}
+            if (res.data == '') {return interaction.reply({content: "User does not exist.", ephemeral: true}).catch((err) => console.log("INTERACTION"))}
             axios.get('https://api.mojang.com/user/profiles/'+res.data.id+'/names').then((history) => {
-                if (history.data == null) {return interaction.reply({content: "Cannot find history", ephemeral: true}).catch((err) => console.error(err))}
+                if (history.data == null) {return interaction.reply({content: "Cannot find history", ephemeral: true}).catch((err) => console.log("INTERACTION"))}
                 const data = history.data
                 var names = ''
                 for (var i = 0; i < data.length; i++) {

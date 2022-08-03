@@ -12,9 +12,9 @@ module.exports = {
             user,
             target
         )
-        if (report == null) {return interaction.reply({content: "The report doens't exist.", ephemeral: true}).catch((err) => console.error(err))}
+        if (report == null) {return interaction.reply({content: "The report doens't exist.", ephemeral: true}).catch((err) => console.log("INTERACTION"))}
         const res = await axios({url: 'https://api.mojang.com/user/profiles/'+target+'/names',method: 'GET'});
-        await interaction.reply({content: "The report has been accepted!", ephemeral: true}).catch((err) => console.error(err))
+        await interaction.reply({content: "The report has been accepted!", ephemeral: true}).catch((err) => console.log("INTERACTION"))
         
         db.prepare('DELETE FROM `reports` WHERE `user` = ? AND `target` = ?').run(user, target)
         db.prepare("INSERT INTO `bans` (`uuid`, `reason`, `proof`, `warning`, `date`) VALUES (?, ?, ?, ?, ?)").run(

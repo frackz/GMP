@@ -29,4 +29,5 @@ module.exports = class BotManager extends Discord.Client {
 
         this.login(this.config.bot.token)
     }
+    get() {return this}
 }

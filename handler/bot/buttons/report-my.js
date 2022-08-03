@@ -12,7 +12,7 @@ module.exports = {
                 "description": "You have no reports we can show you.\n\nIf you would like to report a person, you can read the message above or just press **Report a user**.",
                 "color": 16493568
             }], ephemeral: true
-        }).catch((err) => console.error(err))}        
+        }).catch((err) => console.log("INTERACTION"))}        
 
         var creports = ''
         for (var i = 0; i < data.length; i++) {
@@ -31,6 +31,6 @@ module.exports = {
                 "description": "It looks like you have some reporting going on. Let's take a look at it. :)\n\nYour current reports.\n```"+creports+"```",
                 "color": 16774400
             }], ephemeral: true
-        }).catch((err) => console.error(err))
+        }).catch((err) => console.log("INTERACTION"))
 	}
 };

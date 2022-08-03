@@ -1,22 +1,19 @@
+const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     data: {
         name: "api",
         description: "Get your API key!"
     },
-    execute(client, interaction, config, db) {
-        //const createdAt = interaction.user.createdAt
-        //if(Date.now()-createdAt > 1000*60*60*24*7*2)
-        const data = db.prepare('SELECT * FROM `keys` WHERE `owner` = ?').get(interaction.user.id)
-
+    async execute(client, interaction, config, db) {
+        await interaction.deferReply({ephemeral: true})
+        var data = db.prepare('SELECT * FROM `keys` WHERE `owner` = ?').get(interaction.user.id)
         var owned = false; if(data != null) {owned=true}
-        var key = "None"; if(owned == true){key=data.key}
-        var msg = ""; if (key!="None") {msg="\n\nYour current API key is: ||"+key+"||"}
+        var msg = ""; if (data != null) {msg="\n\nYour current API key is: ||"+data.key+"||"}
 
         // Enable / Disable
         var text = "🍄 Disable"; if(data != null && data.disabled == true){text='🌱 Enable'}
         var style = 4; if(text.includes('En')){style=3}
-        
-        return interaction.reply({
+        interaction.editReply({
             embeds: [{
                 "title": "Welcome to GMP API.",
                 "description": "If you would like an API key, your account must be over 2 weeks old.\nYou can reset or disable your key if it is in bad use.\n\nIf you abuse our API, you will get banned from our discord server, and terminated from using our API.\n\nBy using our API, you also allow our rules as stated in #rules, if you break a rule, you can be banned from our server and API."+msg,
@@ -50,6 +47,6 @@ module.exports = {
                     ]
         
                 }
-            ], ephemeral: true}).catch((err) => console.error(err))
+            ], ephemeral: true}).catch((err) => console.log(err))
     }
 }

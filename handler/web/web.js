@@ -3,12 +3,14 @@ module.exports = class Web {
         this.db = client.db
         this.app = require('express')()
         this.config = client.config
+        this.bot = client.bot
     }
 
     run() {
-        this.app.listen(8080, () => {
-            console.log("[ Web ] Web running on port 8080")
-        })
+        const fs = require('fs'); 
+        const https = require('https'); 
+
+        this.app.listen(8080, () => console.log("[ Web ] On!"))
         this.init()
     }
 
@@ -17,7 +19,7 @@ module.exports = class Web {
             const name = require('./getters/'+f).route
             console.log('[ Web Handler ] Loaded route '+name+' on port 8080')
             this.app.get(name, (req, res) => {
-                require('./getters/'+f).execute(req,res,this.db, this.config)
+                require('./getters/'+f).execute(req,res,this.db, this.config, this.bot)
             })
         })
     }

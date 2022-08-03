@@ -8,8 +8,10 @@ module.exports = {
 	async execute(client, interaction, config, db) {
         const data = db.prepare('SELECT * FROM `keys` WHERE `owner` = ?').get(interaction.user.id)
         if (data == null) {
+            const keyban = db.prepare('SELECT * FROM `keyban` WHERE `user` = ?').get(interaction.user.id)
+            if (keyban != null) {return interaction.reply({content: "You are banned from creating API keys.", ephemeral: true}).catch(err => console.log("INTERACTION"))}
 
-            const key = crypto.randomUUID()
+            var key = crypto.randomUUID()
             db.prepare("INSERT INTO `keys` (`key`, `owner`, `reset`, `disabled`) VALUES (?, ?, ?, ?)").run(
                 key,
                 interaction.user.id,
@@ -37,7 +39,7 @@ module.exports = {
                         ]
             
                     }
-                ], ephemeral: true}).catch((err) => console.error(err))
+                ], ephemeral: true}).catch((err) => console.log("INTERACTION"))
         } else {
             console.log("Already generated")
         }
