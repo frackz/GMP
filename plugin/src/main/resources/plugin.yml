@@ -1,7 +1,10 @@
 name: GmpPlugin
 version: '${project.version}'
-main: xyz.frackz.gmpplugin.GmpPlugin
+main: me.asi.fr3ckz.gmpplugin.GmpPlugin
 api-version: 1.19
 authors: [ Asiii, Fr3ckz ]
-description: Global Minecraft Bans
+description: Global minecraft bans
 website: xyz.frackz
+commands:
+  gmp:
+    description: The main command for the plugin
