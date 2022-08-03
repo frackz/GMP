@@ -21,7 +21,7 @@ module.exports = {
                     "description": "Your key has now been reset, and you are now in a cooldown.\n\nYou can only reset your API key once a day, to make sure that  users doesn't reset their code to often.\n\nIf a user other than you, are using your token without your consent and you are in a cooldown, disable your key using **/api**\n\nYour new key is: ||"+key+"||",
                     "color": 16506368
                 }], ephemeral: true
-                }).catch((err) => console.error(err))
+                }).catch((err) => console.log("INTERACTION"))
             } else {
                 const hours = Math.round((data.reset-Date.now()) / (1000*60*60*60))
                 return interaction.reply({
@@ -44,7 +44,7 @@ module.exports = {
                           }
                         ]
                     }],ephemeral: true
-                }).catch((err) => console.error(err))
+                }).catch((err) => console.log("INTERACTION"))
             }
         }
 	},
