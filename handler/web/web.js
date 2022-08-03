@@ -10,8 +10,7 @@ module.exports = class Web {
         const fs = require('fs'); 
         const https = require('https'); 
 
-        https.createServer({cert: fs.readFileSync('cert/site.crt'), ca: fs.readFileSync('cert/site.ca-bundle'), key: fs.readFileSync('cert/key.key')}, this.app).listen(443);
-
+        this.app.listen(8080, () => console.log("[ Web ] On!"))
         this.init()
     }
 
