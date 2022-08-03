@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>xyz.frackz</groupId>
-    <artifactId>GmpPlugin</artifactId>
+    <groupId>me.Asi.Fr3ckz</groupId>
+    <artifactId>Gmp-Plugin</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>GmpPlugin</name>
+    <name>Gmp Plugin</name>
 
-    <description>Global Minecraft Bans</description>
+    <description>Global minecraft bans</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -71,6 +71,16 @@
             <artifactId>spigot-api</artifactId>
             <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>1.17-R0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
