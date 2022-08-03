@@ -1,7 +1,0 @@
-name: GmpPlugin
-version: '1.0'
-main: xyz.frackz.gmpplugin.GmpPlugin
-api-version: 1.19
-authors: [ Asiii, Fr3ckz ]
-description: Global Minecraft Bans
-website: xyz.frackz
