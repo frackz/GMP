@@ -31,27 +31,18 @@ public class getBanned {
 
         HttpGet request = new HttpGet("https://frackz.xyz/gmp/data");
 
-        // add request headers
         request.addHeader("auth", plugin.getConfig().getString("api-key"));
         request.addHeader("uuid", String.valueOf(uuid));
         request.addHeader(HttpHeaders.USER_AGENT, "Googlebot");
 
         try (CloseableHttpResponse response = httpClient.execute(request)) {
-
-            // Get HttpResponse Status
-            //System.out.println(response.getStatusLine().toString());
-
             HttpEntity entity = response.getEntity();
-            Header headers = entity.getContentType();
-            //System.out.println(headers);
 
             if (entity != null) {
-                // return it as a String
                 String result = EntityUtils.toString(entity);
-                JSONParser parser = new JSONParser();
-                JSONObject json = (JSONObject) parser.parse(result);
+                JSONObject json = (JSONObject) new JSONParser().parse(result);
                 if (json.get("auth").equals(false)) {
-                    System.out.println("GMP: Api is not set or is invalid. Join our discord server to get the api key. frackz.xyz/gmp");
+                    System.out.println("[ GMP ] Api is not set or is invalid. Join our discord server to get the api key. frackz.xyz/gmp");
                 }
                 return json;
             }
