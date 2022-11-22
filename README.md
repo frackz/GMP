@@ -1,4 +1,4 @@
-# Global Minecraft Punishments
+# Global Minecraft Punishments test
 a global minecraft ban system - open source bc why not.
 - bot / web(request handlers) made by frackz
 - plugin / website made by asi
